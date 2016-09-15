@@ -4,6 +4,7 @@ module.exports = {
   get: get,
   addNew: addNew,
   addUser: addUser,
+  edit: edit,
   editUser: editUser
 }
 
@@ -27,16 +28,26 @@ function addUser (req, res) {
   .then(function () {
     res.redirect('users')
   })
-  .catch(function () {
+  .catch(function (err) {
     res.status(500).send(err.message)
   })
 }
 
-function editUser (req, res) {
+function edit (req, res) {
   db.getUser(req.params)
   .then(function (users) {
     vm = { user: users[0] }
     res.render('edit', vm)
+  })
+  .catch(function (err) {
+    res.status(500).send('DATABASE ERROR: ' + err.message)
+  })
+}
+
+function editUser (req, res) {
+  db.editUser(req.body)
+  .then(function () {
+    res.redirect('users')
   })
   .catch(function (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)

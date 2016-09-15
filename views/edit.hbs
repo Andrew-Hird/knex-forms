@@ -10,6 +10,13 @@
     {{user.name}} <br>
     {{user.email}}
     <h2>Update Details:</h2>
+    <form action="/editUser" method="post">
+        <input name="name" placeholder="name"> <br>
+        <input name="email" placeholder="e-mail" type="email"> <br>
+        <input type="submit" value="edit user">
+        <input name="id" value="{{user.id}}" type="hidden">
+    </form>
+    <br>
     <a href="/users"><button>go back to users</button></a>
   </body>
 </html>
