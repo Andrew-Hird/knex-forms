@@ -3,7 +3,8 @@ var db = require('./db.js')
 module.exports = {
   get: get,
   addNew: addNew,
-  addUser: addUser
+  addUser: addUser,
+  editUser: editUser
 }
 
 function get (req, res) {
@@ -24,9 +25,20 @@ function addNew (req, res) {
 function addUser (req, res) {
   db.addUser(req.body)
   .then(function () {
-    res.redirect('/users')
+    res.redirect('users')
   })
   .catch(function () {
     res.status(500).send(err.message)
+  })
+}
+
+function editUser (req, res) {
+  db.getUser(req.params)
+  .then(function (users) {
+    vm = { user: users[0] }
+    res.render('edit', vm)
+  })
+  .catch(function (err) {
+    res.status(500).send('DATABASE ERROR: ' + err.message)
   })
 }

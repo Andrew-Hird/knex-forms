@@ -16,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.get('/users', routes.get)
 app.get('/new', routes.addNew)
 app.post('/addUser', routes.addUser)
+app.get('/editUser/:id', routes.editUser)
 
 app.listen(PORT, function () {
   console.log('Listening on port', PORT)
