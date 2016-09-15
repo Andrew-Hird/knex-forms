@@ -10,6 +10,7 @@ function get () {
   return knex('users').select()
 }
 
-function addUser () {
-
+function addUser (user) {
+  return knex('users')
+  .insert({name: user.name, email: user.email})
 }

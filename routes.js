@@ -22,5 +22,11 @@ function addNew (req, res) {
 }
 
 function addUser (req, res) {
-
+  db.addUser(req.body)
+  .then(function () {
+    res.redirect('/users')
+  })
+  .catch(function () {
+    res.status(500).send(err.message)
+  })
 }

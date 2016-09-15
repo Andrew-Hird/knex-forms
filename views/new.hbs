@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>New User</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>Add New User</h1>
-    <form action="/addUser" method="post"></form>
-  </body>
+    <form action="/addUser" method="post">
+        <input name="name" placeholder="name"> <br>
+        <input name="email" placeholder="e-mail"> <br>
+        <input type="submit" value="add user">
+    </form>
+    <a href="/users"><button>go back to users</button></a> 
+</body>
+
 </html>
